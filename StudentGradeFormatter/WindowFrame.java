@@ -1,16 +1,21 @@
 package StudentGradeFormatter;
 
+import java.awt.CardLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WindowFrame extends JFrame implements ActionListener {
-    
-    JPanel panel = new JPanel();
+public class WindowFrame extends JFrame {
+
+    JPanel masterPanel = new JPanel();
+
+    CardLayout panelCollection = new CardLayout();
+
+    JPanel mainPanel = new JPanel();
+
+    JPanel dirPanel = new JPanel();
 
     GraphicsEnvironment gEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
@@ -22,13 +27,6 @@ public class WindowFrame extends JFrame implements ActionListener {
 
     JFileChooser fileSelect = new JFileChooser();
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-
-        
-    }
-
     public WindowFrame() {
 
         super();
@@ -39,7 +37,9 @@ public class WindowFrame extends JFrame implements ActionListener {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        this.add(this.panel);
+        masterPanel.add(mainPanel, "Main");
+
+        masterPanel.add(dirPanel, "Student Directory");
 
         
 
@@ -50,8 +50,6 @@ public class WindowFrame extends JFrame implements ActionListener {
 
         this.dispose();
     }
-
-    
 
 
 }
