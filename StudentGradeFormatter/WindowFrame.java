@@ -37,6 +37,12 @@ public class WindowFrame extends JFrame implements ActionListener {
 
         this.setSize((int)this.screenWidth/4, (int)this.screenHeight/4);
 
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        this.add(this.panel);
+
+        
+
 
     }
 
