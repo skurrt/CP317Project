@@ -1,1 +1,1 @@
-# I am editing the README file
+# CP317 Project, Student Grade Formatter Written and Designed by Josh Mutsaers, Parker Riches, and Robert Glennie.
