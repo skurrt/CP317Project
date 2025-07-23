@@ -162,16 +162,20 @@ public class WindowFrame extends JFrame {
                 if (nameFileSelected && courseFilesSelected) {
 
                     File file = selectFile();
-                    try {
+                    
+                    if (file != null) {
+                        
+                        try {
 
-                        DataHandler.writeOutputFile(file.getAbsolutePath());
+                            DataHandler.writeOutputFile(file.getAbsolutePath());
 
-                        popup("Output file created at " + file.getAbsolutePath());
+                            popup("Output file created at " + file.getAbsolutePath());
 
-                    } catch (IOException ex){
+                        } catch (IOException ex){
 
-                        ex.printStackTrace();
-                    }
+                            ex.printStackTrace();
+                        }
+                    }   
                 }
                 else {
                     popup("Can't export non-existent data");
