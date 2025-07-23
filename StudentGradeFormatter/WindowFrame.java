@@ -120,6 +120,8 @@ public class WindowFrame extends JFrame {
 
                         updateViewport();
 
+                        popup("File selected, source: " + file.getAbsolutePath());
+
                     } catch (IOException ex) {
 
                         ex.printStackTrace();
@@ -143,6 +145,8 @@ public class WindowFrame extends JFrame {
                         courseFilesSelected = true;
 
                         updateViewport();
+
+                        popup("File selected, source: " + file.getAbsolutePath());
 
                     } catch (IOException ex) {
                     }
@@ -239,9 +243,9 @@ public class WindowFrame extends JFrame {
 
         if (courseFilesSelected && nameFileSelected) {
 
-            DataHandler.formatIntoArray();
+            DataHandler.studentsFormatted.clear();
 
-            
+            DataHandler.formatIntoArray();
 
             dirView.setViewport(null);
 
