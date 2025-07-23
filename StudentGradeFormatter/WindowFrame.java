@@ -2,15 +2,15 @@ package StudentGradeFormatter;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,17 +19,15 @@ import javax.swing.JScrollPane;
 
 public class WindowFrame extends JFrame {
 
-    JScrollPane dirView = new JScrollPane(new JList<>(DataHandler.students.values().toArray()));
+    JScrollPane dirView = new JScrollPane(new JList<>(DataHandler.studentsFormatted));
 
-    JPanel mainPanel = new JPanel(new BorderLayout(2,2));
+    CardLayout cl = new CardLayout();
 
-    JPanel dirPanel = new JPanel(new BorderLayout(2,2));
+    JPanel mainPanel = new JPanel(cl);
 
-    JFileChooser fileSelect = new JFileChooser();
+    JPanel p1 = new JPanel(new BorderLayout(2, 2));
 
-    CardLayout panelCollection = new CardLayout();
-
-    JPanel masterPanel = new JPanel(panelCollection);
+    JPanel p2 = new JPanel(new BorderLayout(2, 2));
 
     String mPName = "Main";
 
@@ -45,9 +43,13 @@ public class WindowFrame extends JFrame {
 
     String currentPanel = mPName;
 
-    JButton switchButton = new JButton(dirName);
+    JButton switchButton = new JButton("Go to " + dirName);
 
-    JButton readFile = new JButton("Choose File to Read");
+    JButton switchButton2 = new JButton("Go to " + mPName);
+
+    JButton readNameFile = new JButton("Choose Student Name File");
+
+    JButton readCourseFile = new JButton("Choose Course File");
 
     JButton exportFile = new JButton("Export Data");
 
@@ -65,6 +67,8 @@ public class WindowFrame extends JFrame {
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        this.setTitle("Student Grade Formatter");
+
         this.setupAuxillaryAssets();
 
     }
@@ -76,13 +80,13 @@ public class WindowFrame extends JFrame {
 
     public void setupAuxillaryAssets() {
 
-        int labelWidth = masterPanel.getWidth()/10;
+        int labelMaxWidth = this.screenWidth/10;
 
-        int labelHeight = masterPanel.getHeight()/10;
+        int labelMaxHeight = this.screenHeight/10;
 
-        JLabel cardLabel = new JLabel(currentPanel);
+        switchButton.setPreferredSize(new Dimension(labelMaxWidth, labelMaxHeight));
 
-        JPanel buttonPanel = new JPanel();
+        switchButton2.setPreferredSize(new Dimension(labelMaxWidth, labelMaxHeight));
 
         switchButton.addActionListener(new ActionListener() {
             @Override
@@ -90,47 +94,83 @@ public class WindowFrame extends JFrame {
 
                 switchPanel();
 
-                cardLabel.setText(currentPanel);
             }
         });
 
-        buttonPanel.add(cardLabel, BorderLayout.WEST);
+        readNameFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        buttonPanel.add(switchButton, BorderLayout.EAST);
 
-        buttonPanel.setPreferredSize(new Dimension(labelWidth*2, labelHeight));
 
-        dirPanel.add(dirView, BorderLayout.CENTER);
+            }
+        });
 
-        dirPanel.add(buttonPanel, BorderLayout.NORTH);
+        readCourseFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-        mainPanel.add(buttonPanel, BorderLayout.NORTH);
-        
-        masterPanel.add(mainPanel);
 
-        masterPanel.add(dirPanel);
 
-        this.add(masterPanel);
+            }
+        });
+
+        exportFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                
+            }
+        });
+
+        switchButton2.addActionListener(switchButton.getActionListeners()[0]);
+
+        p1.add(switchButton, BorderLayout.PAGE_START);
+
+        JPanel panelception = new JPanel(new GridLayout());
+
+        panelception.setBackground(Color.BLACK);
+
+        panelception.setMaximumSize(new Dimension(p1.getWidth()/8, p1.getHeight()/8));
+
+        panelception.add(readNameFile);
+
+        panelception.add(readCourseFile);
+
+        panelception.add(exportFile);
+
+        p1.add(panelception);
+
+        p2.add(dirView, BorderLayout.CENTER);
+
+        p2.add(switchButton2, BorderLayout.PAGE_START);
+
+        mainPanel.add(p1, mPName);
+
+        mainPanel.add(p2, dirName);
+
+        this.add(mainPanel);
 
     }
 
     public void switchPanel() {
 
-        switchButton.setText(currentPanel);
-
         if (currentPanel.equals(mPName)) {
 
-            panelCollection.show(masterPanel, dirName);
+            cl.show(mainPanel, dirName);
 
             currentPanel = dirName;
         }
 
         else {
-            panelCollection.show(masterPanel, mPName);
+            cl.show(mainPanel, mPName);
 
             currentPanel = mPName;
 
         }
     }
+
+    
 
 }

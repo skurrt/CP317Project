@@ -6,6 +6,12 @@ import java.io.*;
 
 public class DataHandler {
     static TreeMap<Integer, Student> students = new TreeMap<>();
+
+    static String[] studentsFormatted = {"No Data To Display"};
+
+    
+
+
     
     // Add a student to the TreeMap
     public static void addStudent(Student student) {
@@ -150,3 +156,4 @@ public class DataHandler {
             }
         }
     }
+}
