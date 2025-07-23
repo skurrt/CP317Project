@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 
 
@@ -48,7 +47,9 @@ public class WindowFrame extends JFrame {
 
     JButton switchButton2 = new JButton("Go to " + mPName);
 
-    JButton readFile = new JButton("Choose File to Read");
+    JButton readNameFile = new JButton("Choose Student Name File");
+
+    JButton readCourseFile = new JButton("Choose Course File");
 
     JButton exportFile = new JButton("Export Data");
 
@@ -96,9 +97,19 @@ public class WindowFrame extends JFrame {
             }
         });
 
-        readFile.addActionListener(new ActionListener() {
+        readNameFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+
+
+            }
+        });
+
+        readCourseFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
 
 
             }
@@ -107,6 +118,7 @@ public class WindowFrame extends JFrame {
         exportFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
 
                 
             }
@@ -122,7 +134,9 @@ public class WindowFrame extends JFrame {
 
         panelception.setMaximumSize(new Dimension(p1.getWidth()/8, p1.getHeight()/8));
 
-        panelception.add(readFile);
+        panelception.add(readNameFile);
+
+        panelception.add(readCourseFile);
 
         panelception.add(exportFile);
 
@@ -156,5 +170,7 @@ public class WindowFrame extends JFrame {
 
         }
     }
+
+    
 
 }
