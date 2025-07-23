@@ -14,12 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 
 
 public class WindowFrame extends JFrame {
 
-    JScrollPane dirView = new JScrollPane(new JList<>(DataHandler.students.values().toArray()));
+    JScrollPane dirView = new JScrollPane(new JList<>(DataHandler.studentsFormatted));
 
     CardLayout cl = new CardLayout();
 
