@@ -17,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.Border;
 
 
 
@@ -163,7 +162,7 @@ public class WindowFrame extends JFrame {
 
                         DataHandler.writeOutputFile(file.getAbsolutePath());
 
-                        popup("Output file created!");
+                        popup("Output file created at " + file.getAbsolutePath());
 
                     } catch (IOException ex){
 
@@ -241,6 +240,8 @@ public class WindowFrame extends JFrame {
         if (courseFilesSelected && nameFileSelected) {
 
             DataHandler.formatIntoArray();
+
+            
 
             dirView.setViewport(null);
 
