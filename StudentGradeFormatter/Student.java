@@ -8,10 +8,10 @@ public class Student implements Comparable<Student> {
     
     public Student(int studentId, String name) {
         if (studentId <= 0) {
-            throw new IllegalArgumentException("Student ID must be positive");
+            throw new IllegalArgumentException("Student ID should be positive");
         }
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be null or empty");
+            throw new IllegalArgumentException("Name can't be null or empty");
         }
         
         this.studentId = studentId;
@@ -35,21 +35,21 @@ public class Student implements Comparable<Student> {
     // Setters
     public void setStudentId(int studentId) {
         if (studentId <= 0) {
-            throw new IllegalArgumentException("Student ID must be positive");
+            throw new IllegalArgumentException("Student ID should be positive");
         }
         this.studentId = studentId;
     }
     
     public void setName(String name) {
         if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be null or empty");
+            throw new IllegalArgumentException("Name can't be null or empty");
         }
         this.name = name;
     }
     
     public void addCourse(Course course) {
         if (course == null) {
-            throw new IllegalArgumentException("Course cannot be null");
+            throw new IllegalArgumentException("Course can't be null");
         }
         courses.add(course);
     }
