@@ -122,6 +122,8 @@ public class WindowFrame extends JFrame {
 
                         popup("File selected, source: " + file.getAbsolutePath());
 
+                        readNameFile.setVisible(false);
+
                     } catch (IOException ex) {
 
                         ex.printStackTrace();
@@ -148,6 +150,8 @@ public class WindowFrame extends JFrame {
 
                         popup("File selected, source: " + file.getAbsolutePath());
 
+                        readCourseFile.setVisible(false);
+
                     } catch (IOException ex) {
                     }
                 }
@@ -164,7 +168,7 @@ public class WindowFrame extends JFrame {
                     File file = selectFile();
                     
                     if (file != null) {
-                        
+
                         try {
 
                             DataHandler.writeOutputFile(file.getAbsolutePath());
@@ -189,7 +193,7 @@ public class WindowFrame extends JFrame {
 
         JPanel panelception = new JPanel(new GridLayout());
 
-        panelception.setBackground(Color.BLACK);
+        panelception.setBackground(Color.gray);
 
         panelception.setMaximumSize(new Dimension(p1.getWidth()/8, p1.getHeight()/8));
 
