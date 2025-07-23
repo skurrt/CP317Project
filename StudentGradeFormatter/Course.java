@@ -6,6 +6,7 @@ public class Course {
     private float test2;
     private float test3;
     private float exam;
+    private float finalGrade;
     
     public Course(String courseCode) {
         if (courseCode == null || courseCode.isEmpty()) {
@@ -38,6 +39,11 @@ public class Course {
 
     public float getExam() {
         return exam;
+    }
+
+    public float getFinal() {
+
+        return finalGrade;
     }
 
     // Setters
@@ -76,7 +82,7 @@ public class Course {
         this.exam = exam;
     }
     
-    public float calculateFinalGrade() {
-        return (test1 * 0.2f) + (test2 * 0.2f) + (test3 * 0.2f) + (exam * 0.4f);
+    public void calculateFinalGrade() {
+        this.finalGrade = (test1 * 0.2f) + (test2 * 0.2f) + (test3 * 0.2f) + (exam * 0.4f);
     }
 }

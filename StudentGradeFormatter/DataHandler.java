@@ -1,17 +1,14 @@
 package StudentGradeFormatter;
 
-import java.util.TreeMap;
-import java.util.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class DataHandler {
+
     static TreeMap<Integer, Student> students = new TreeMap<>();
 
-    static String[] studentsFormatted = {"No Data To Display"};
-
-    
-
-
+    static ArrayList<String> studentsFormatted = new ArrayList<>();
     
     // Add a student to the TreeMap
     public static void addStudent(Student student) {
@@ -119,6 +116,8 @@ public class DataHandler {
                     course.setTest3(test3);
                     course.setExam(exam);
                     
+                    course.calculateFinalGrade();
+
                     student.addCourse(course);
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Invalid number format in grades file: " + line);
@@ -150,10 +149,29 @@ public class DataHandler {
                         course.getTest2(),
                         course.getTest3(),
                         course.getExam(),
-                        course.calculateFinalGrade());
+                        course.getFinal());
                 }
                 writer.println();
             }
         }
     }
+
+    public static void formatIntoArray() {
+
+        studentsFormatted.clear();
+
+        String temp;
+
+        for (Student stu : students.values()) {
+
+            temp = String.valueOf(stu.getStudentId()) + ", " + stu.getName() + " | ";
+
+            for (Course c : stu.getCourses()) {
+                temp += "Course Code: " + c.getCourseCode() + ", Grade: " + String.valueOf(c.getFinal()) + "| ";
+            }
+
+            studentsFormatted.add(temp);
+        }
+    }
+
 }
